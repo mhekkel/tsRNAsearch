@@ -1,4 +1,4 @@
-#!/usr/bin/env Rscript
+#!/usr/bin/Rscript
 args = commandArgs(trailingOnly=TRUE)
 
 library(VennDiagram)
