@@ -38,7 +38,7 @@ for line in readlines:
         start = strpline[1]
         stop = strpline[2]
         read = strpline[3]
-        read_coverage = range(int(start), int(stop) + 1)
+        read_coverage = list(range(int(start), int(stop) + 1))
         read_cov_list = list()
         read_cov_list.append(read_coverage)
         if tRNA in tRNAs:
@@ -49,10 +49,10 @@ for line in readlines:
             tRNAs[tRNA] = read_coverage 
 
 ### Write depth results for all tRNAs with reads multi-mapped
-for k,v in tRNAs.iteritems():
+for k,v in tRNAs.items():
     negSet.remove(k) #remove tRNAs that have reads mapped from the negSet
     getLen = int(tRNALen.get(k))  # Get the total length of each tRNA using a prebuilt tRNA length file
-    myRange = range(1,getLen+1)
+    myRange = list(range(1,getLen+1))
     for i in myRange:
         count = v.count(i)
         newfile.write("%s\t%s\t%s\n" % (k, i, count))
@@ -60,8 +60,7 @@ for k,v in tRNAs.iteritems():
 ### This step is important because it ensures all resulting depth files are the same length
 for negtRNA in negSet:
     getLen = int(tRNALen.get(negtRNA))  # Get the total length of each tRNA using a prebuilt tRNA length file
-    myRange = range(1,getLen+1)
+    myRange = list(range(1,getLen+1))
     for i in myRange:
         newfile.write("%s\t%s\t%s\n" % (negtRNA, i, 0))
 newfile.close()
-

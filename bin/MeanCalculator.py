@@ -22,7 +22,7 @@ for line in readlines:
     feature = items[0]
     data = items[2::3]
     data = [0 if not x.isdigit() else x for x in data] # convert NA or other nan to zero
-    data = map(float, data)
+    data = list(map(float, data))
     summed = sum(data)
     mean = (float(summed) / len(data))
     ### Standard deviation:

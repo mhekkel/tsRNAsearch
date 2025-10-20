@@ -26,10 +26,10 @@ for line in readlines:
     else:
         tRNAs[strpline[0]] = [strpline[2]] 
 
-for k, v in tRNAs.iteritems():
+for k, v in tRNAs.items():
     v3 = v
     tRNALen = len(v)
-    values = map(float, v3)
+    values = list(map(float, v3))
     meanV = np.mean(values)
     stdV = np.std(values)
     if float(meanV) == 0:
@@ -38,4 +38,3 @@ for k, v in tRNAs.iteritems():
         coef_variation = float(stdV)/float(meanV)
     newfile.write(k + "\t" + str(meanV) + "\t" + str(stdV) + "\t" + str(coef_variation) + "\n")	
 newfile.close()
-

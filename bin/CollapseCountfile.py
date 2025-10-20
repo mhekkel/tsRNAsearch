@@ -40,4 +40,3 @@ for key in sorted(collapse): #Sort and print the output
     newfile.write(key + "\t" + str(collapse[key]) + "\n")
 
 newfile.close()
-

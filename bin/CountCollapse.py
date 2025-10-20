@@ -40,7 +40,7 @@ newfile.write("tRNA\traw.read.count\tpercent.as.tRNA.total\tpercent.as.mapped.re
 readcount = 0
 total_tRNApercent = 0
 total_totalpercent = 0
-for k,v in my_dict.iteritems():
+for k,v in my_dict.items():
     percent_of_tRNAs = round((float(v)/float(tRNA_mapped_reads)) * 100, 2)
     percent_of_total = round((float(v)/float(total_mapped_reads)) * 100, 2)
     newfile.write(k + "\t" + str(v) + "\t" + str(percent_of_tRNAs) + "\t" + str(percent_of_total) + "\n")    

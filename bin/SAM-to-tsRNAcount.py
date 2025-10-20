@@ -70,13 +70,13 @@ for line in sys.stdin:
             elif "I" in i: # Do nothing
                 pass
             else:
-                print("ERROR: unknown CIGAR character: ", i)
-                print("SAM account:\n", splitline)
+                print(("ERROR: unknown CIGAR character: ", i))
+                print(("SAM account:\n", splitline))
         mapping_to = mapping_from + int(read_span_of_tRNA) - 1 # -1 to correct for mapping start position including the nucleotide it starts with (i.e. starting from 1 INCLUDES 1 in the read mapping)
         SAM_tsRNA = tRNA + "_" + str(mapping_from) + "-" + str(mapping_to)
         if SAM_tsRNA not in giant_tsRNA_dict:
-            print("ERROR: ", SAM_tsRNA, " not in dictionary!")
-            print("SAM account:\n", splitline)
+            print(("ERROR: ", SAM_tsRNA, " not in dictionary!"))
+            print(("SAM account:\n", splitline))
         else:
             old_val = giant_tsRNA_dict.get(SAM_tsRNA)
             giant_tsRNA_dict[SAM_tsRNA] = int(old_val) + 1  # Add 1 to the dictionary counter
@@ -84,6 +84,6 @@ for line in sys.stdin:
 ### Sort dict, write to file
 sorted_dict = collections.OrderedDict(sorted(giant_tsRNA_dict.items())) # Sort dict by key
 output = open(sys.argv[2], 'w')
-for k,v in sorted_dict.items():
+for k,v in list(sorted_dict.items()):
     output.write(k + "\t" + str(v) + "\n")
 output.close()

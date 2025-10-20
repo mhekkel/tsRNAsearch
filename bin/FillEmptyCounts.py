@@ -30,12 +30,12 @@ for v in partial_count_file:
 
 # Fill the remainder of new dict with empty values
 for i in trna_set:
-    if i in trna_species_dict.keys():
+    if i in list(trna_species_dict.keys()):
         pass
     else:
         trna_species_dict[i] = (0)
 
 # Write dict to file
-for k,v in trna_species_dict.iteritems():
+for k,v in trna_species_dict.items():
     filled_count_file.write(k + "\t" + str(v) + "\n")
 filled_count_file.close()

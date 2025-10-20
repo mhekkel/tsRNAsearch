@@ -16,7 +16,7 @@ for samLine in SAMList:
         Output.write(line + "\n")
     else:
         read = str(samLine[0])
-        if read in myDict.keys():
+        if read in list(myDict.keys()):
             myDict[read].append(line)
         else:
             myList = [line]
@@ -25,7 +25,7 @@ for samLine in SAMList:
 tRNAgroupDict = dict()
 counter = 0
 counterGroup = 0
-for k,v in myDict.iteritems():
+for k,v in myDict.items():
     #print("\n", (k))
     if v[0].split("\t")[2].startswith("chr"):
         #if "-mt_" in v[0].split("\t")[2]:  # If this is a mitochondrial tRNA, don't collapse it
@@ -78,9 +78,9 @@ for k,v in myDict.iteritems():
                 elif int(aligned[1]) == 272: # read aligned in - orientation (secondary alignment) 
                     newLine = aligned
                 else:
-                    print ("ERROR in SAMcollapse.py: Alignment below does not have correct flag:\n%s" % (aligned))
+                    print(("ERROR in SAMcollapse.py: Alignment below does not have correct flag:\n%s" % (aligned)))
             newLine = tRNAgroup + "\t" + newLine[3] + "\t" + str(len(newLine[9]) + int(newLine[3])) + "\t" + newLine[0]
-            if tRNAgroup in tRNAgroupDict.keys():
+            if tRNAgroup in list(tRNAgroupDict.keys()):
                 tRNAgroupDict[tRNAgroup].append(newLine)
             else:
                 myList = [newLine]
@@ -90,12 +90,11 @@ for k,v in myDict.iteritems():
 Output.close()
 dumped_reads.close()
 
-print counter, counterGroup
+print(counter, counterGroup)
 
 leftovers = open(sys.argv[2] + "_tRNAs-almost-mapped.txt", "w")
-for k,v in tRNAgroupDict.iteritems():
+for k,v in tRNAgroupDict.items():
 #    print(k,v)
     for values in v:
         leftovers.write(values + "\n")
 leftovers.close()
-

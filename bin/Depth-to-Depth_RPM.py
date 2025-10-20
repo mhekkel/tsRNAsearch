@@ -24,4 +24,3 @@ for line in htseq_readlines:
     rpm = read_count/scaling_factor
     newfile.write(strpline[0] + "\t" + strpline[1] + "\t" + str(rpm) + "\n")	
 newfile.close()
-

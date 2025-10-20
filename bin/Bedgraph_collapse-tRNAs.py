@@ -41,10 +41,9 @@ for line in readlines:
             newval = val + reads
             collapsed[tRNA][coord] = newval
 
-for k, v in collapsed.iteritems():
-    for key, values in v.iteritems():
-        float_values = map(float, values)
+for k, v in collapsed.items():
+    for key, values in v.items():
+        float_values = list(map(float, values))
         summed = sum(float_values)
         newfile.write("%s\t%s\t%s\n" % (k, key, summed))
 newfile.close()
-

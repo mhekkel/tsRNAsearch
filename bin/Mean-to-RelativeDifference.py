@@ -31,6 +31,3 @@ for line in readlines:
         rel_diff = (diff)/(min(mean1, mean2)) * 100  # Calculate relative difference 
     newfile.write(feature + "\t" + str(mean1) + "\t" + str(mean2) + "\t" + str(rel_diff) + "\t" + str(std1) + "\t" + str(std2) + "\n")
 newfile.close()
-
-
-
